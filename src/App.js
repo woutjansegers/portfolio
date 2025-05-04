@@ -670,10 +670,10 @@ export default function Portfolio() {
                             />
                         </HeroSubtitle>
                         <ButtonContainer>
-                            <PrimaryButton onClick={() => scrollToSection('projects')}>
+                            <PrimaryButton onClick={() => scrollToSection('Projecten')}>
                                 Bekijk mijn werk
                             </PrimaryButton>
-                            <PrimaryButton onClick={() => scrollToSection('about')}>
+                            <PrimaryButton onClick={() => scrollToSection('Over Mij')}>
                                 Over Mij
                             </PrimaryButton>
                         </ButtonContainer>
