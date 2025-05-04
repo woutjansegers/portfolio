@@ -559,7 +559,7 @@ export default function Portfolio() {
             description: "Een responsive portfolio gebouwd met React en styled-components.",
             tags: ["React", "styled-components"],
             image: portfolio,
-            github: "https://portfolio.woutjansegers.pages.dev/",
+            github: "https://portfolio-woutjansegers.netlify.app/",
         },
         {
             title: "Aerolytics",

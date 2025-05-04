@@ -40,7 +40,7 @@ const projects = [
     description: "Het portfolio-project had als doel om een persoonlijke website te bouwen waarin al mijn schoolprojecten overzichtelijk worden weergegeven. Het is dus een overkoepelend project waarin ik niet enkel toon wat ik heb gedaan, maar ook wat ik geleerd heb doorheen het jaar. Dit portfolio moest visueel aantrekkelijk, technisch goed onderbouwd en volledig responsive zijn, zodat het op elk toestel goed werkt, van desktop tot smartphone. \n\nIk bouwde de website volledig zelf met React en maakte gebruik van styled-components om het design modulair en consistent te houden. De site bevat een overzicht van al mijn projecten, inclusief beschrijvingen, gebruikte technologieën en eventuele afbeeldingen. Ook zorgde ik voor een vlotte navigatie, goede structuur en aandacht voor toegankelijkheid, zodat de site niet alleen mooi oogt maar ook gebruiksvriendelijk is. \n\nIn dit project leerde ik vooral hoe je een volledig project van A tot Z zelfstandig opzet, met zowel aandacht voor technische opbouw als voor presentatiewaarde. Ik heb mijn kennis van React verder verdiept en geleerd hoe je met styled-components efficiënt stijlen beheert in een groter geheel. Bovendien kreeg ik meer inzicht in hoe je jezelf professioneel presenteert aan de buitenwereld, een belangrijke stap richting stage of werkveld.",
     tags: ["React", "styled-components"],
     images: [portfolio, portfolio1, portfolio2],
-    github: "https://portfolio-woutjansegers.pages.dev/",
+    github: "https://portfolio-woutjansegers.netlify.app/",
   },
   {
     id: "pikassa",
