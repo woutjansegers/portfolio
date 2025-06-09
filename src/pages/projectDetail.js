@@ -9,6 +9,7 @@ import portfolio2 from "../Images/portfolio2.jpg";
 import AR from "../Images/AR.png";
 import AR1 from "../Images/AR1.jpg";
 import AR2 from "../Images/AR2.jpg";
+import AR3 from "../Images/AR3.jpg";
 import Pikassa from "../Images/pikassa.png";
 import Pikassa1 from "../Images/pikassa1.png";
 import Pikassa2 from "../Images/pikassa2.png";
@@ -60,10 +61,10 @@ const projects = [
   },
   {
     id: "ar-rondleiding",
-    title: "AR-rondleiding",
+    title: "ExploreMore",
     description: "Voor dit project werkten we in opdracht van Thomas More, met als doel om een innovatieve manier te ontwikkelen om internationale studenten rond te leiden op de campus. De traditionele fysieke rondleidingen zijn niet altijd haalbaar of efficiënt, zeker niet voor studenten die van ver komen of nog twijfelen om zich in te schrijven. Daarom wilden we onderzoeken of Augmented Reality (AR) een waardevolle aanvulling kon zijn om de campus op een aantrekkelijke en interactieve manier te leren kennen. \n\nWe ontwikkelden een proof of concept waarin we met behulp van Flutter, Unity en Vuforia een AR-ervaring opbouwden. Gebruikers kunnen met hun smartphone specifieke markers op de campus scannen, waarna digitale informatie, visuals of virtuele gidsen verschijnen die uitleg geven over de locatie. Het project is ontworpen om op school zelf gebruikt te worden, met als doel om een eerste indruk te geven van hoe een volwaardige AR-rondleiding eruit zou kunnen zien. Dit concept dient ook als onderbouwd voorstel voor mogelijke toekomstige investering of financiering om het idee verder uit te werken tot een volwaardig product. \n\nTijdens dit project heb ik veel bijgeleerd over AR-technologieën, vooral door het combineren van Flutter voor de mobiele interface en Unity met Vuforia voor de AR-functies. Het was een waardevolle ervaring om verschillende technologieën samen te brengen tot één werkend geheel. Daarnaast kreeg ik meer inzicht in het ontwikkelen van een prototype als communicatiemiddel naar stakeholders toe niet alleen om te tonen wat technisch mogelijk is, maar ook om draagvlak en eventueel budget te verkrijgen voor verdere ontwikkeling.",
     tags: ["Flutter", "Unity", "Vuforia"],
-    images: [AR, AR1, AR2],
+    images: [AR3,AR, AR1, AR2],
     github: "https://github.com/Thomas-More-Digital-Innovation/2324-ITF-001-AR-rondleiding",
   },
   {

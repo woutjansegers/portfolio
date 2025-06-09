@@ -541,10 +541,10 @@ export default function Portfolio() {
 
     const projects = [
         {
-            title: "AR-rondleiding",
+            title: "ExploreMore",
             description: "Internationale studenten rondleiden met behulp van AR.",
             tags: ["Flutter", "Unity", "Vuforia"],
-            image: AR,
+            image: AR3,
             github: "https://github.com/Thomas-More-Digital-Innovation/2324-ITF-001-AR-rondleiding",
         },
         {
