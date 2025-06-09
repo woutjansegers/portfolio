@@ -7,7 +7,7 @@ import duffalos from './Images/duffalo.png';
 import portfolio from './Images/portfolio.jpg';
 import tech from './Images/tech.jpg';
 import drone from './Images/drone.jpg';
-import AR from './Images/AR.png'
+import AR3 from './Images/AR3.jpg'
 import Pikassa from './Images/pikassa3.png'
 import mpioosterlo from './Images/mpioosterlo.jpg'
 import {motion} from "framer-motion";
