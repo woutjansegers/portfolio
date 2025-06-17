@@ -1,7 +1,7 @@
 import { useState, useEffect} from 'react';
 import styled, { createGlobalStyle, keyframes } from 'styled-components';
 import { ArrowUp, Menu, X, ExternalLink} from 'lucide-react';
-import wout from './Images/wout1.jpg';
+import wout from './Images/wout1.jpeg';
 import beersebende from './Images/beersebende.png';
 import duffalos from './Images/duffalo.png';
 import portfolio from './Images/portfolio.jpg';
