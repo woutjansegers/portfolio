@@ -464,8 +464,8 @@ const Footer = styled.footer`
 
 const handleDownload = () => {
     const link = document.createElement('a');
-    link.href = '/cvEcht.pdf';
-    link.download = 'CV_Wout_Jansegers.pdf';
+    link.href = '/Resume_Wout_Jansegers.pdf';
+    link.download = 'Resume_Wout_Jansegers.pdf';
     link.click();
 };
 
@@ -723,7 +723,7 @@ export default function Portfolio() {
                             </SkillsContainer>
 
                             <PrimaryButton onClick={handleDownload}>
-                                Download CV <ExternalLink size={16} />
+                                Download Resume <ExternalLink size={16} />
                             </PrimaryButton>
                         </AboutContent>
                     </AboutContainer>

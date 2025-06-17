@@ -5,9 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="45a7c0c7-d08e-4601-84a9-4467e5032be7" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/public/Resume_Wout_Jansegers.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/projectDetail.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/projectDetail.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,6 +60,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\school\DI\portfolio\public" />
       <recent name="C:\school\DI\portfolio\src\Images" />
     </key>
   </component>
@@ -110,6 +111,8 @@
       <workItem from="1746384885753" duration="3428000" />
       <workItem from="1746443684020" duration="66000" />
       <workItem from="1749500501107" duration="421000" />
+      <workItem from="1749544055083" duration="9000" />
+      <workItem from="1750174029773" duration="715000" />
     </task>
     <servers />
   </component>
