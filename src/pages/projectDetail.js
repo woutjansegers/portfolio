@@ -30,6 +30,7 @@ import tech1 from "../Images/tech1.jpg";
 import tech2 from "../Images/tech2.jpg";
 import tech3 from "../Images/tech3.jpg";
 import tech4 from "../Images/tech4.jpg";
+import tech5 from "../Images/tech5.jpg";
 import mpioosterlo from "../Images/mpioosterlo.jpg";
 import mpioosterlo1 from "../Images/mpioosterlo1.jpg";
 import mpioosterlo2 from "../Images/mpioosterlo2.jpg";
@@ -96,7 +97,7 @@ const projects = [
     title: "Techtalks",
     description: "Techtalks was geen traditioneel project met een eindproduct, maar eerder een persoonlijk leertraject dat doorheen het schooljaar liep. Vanuit de opleiding kregen we verschillende technologische onderwerpen aangereikt, met als doel om onszelf te verdiepen in deze thema’s en onze kennis te verbreden buiten de gewone lessen. Na de verkenningsfase moesten we telkens een korte presentatie of verdediging geven aan een coach, om aan te tonen dat we het onderwerp niet alleen begrepen, maar ook praktisch konden toepassen. \n\nTijdens dit traject werkte ik rond verschillende technologieën en concepten, waaronder Laravel, Flutter, React en Security. Bij elk onderwerp verdiepte ik mij in zowel de theorie als de praktijk: hoe werkt het, waar wordt het voor gebruikt, en hoe zou ik het zelf kunnen toepassen in een project? Ik maakte kleine demo’s, documenteerde mijn bevindingen en ging het gesprek aan met een coach om te tonen dat ik het begreep. Deze aanpak zorgde ervoor dat ik breder onderlegd raakte, en niet enkel vertrouwde op de technologieën waarmee ik al bekend was. \n\nDe Techtalks gaven me vooral de kans om zelfstandig te leren en nieuwe technologieën te verkennen. Ik merkte dat het me hielp om vlotter nieuwe dingen op te pikken, kritisch te denken over hun toepassing, en sneller tot de kern van een technologie te komen. Daarnaast was het een goede oefening in mondeling verdedigen van technische kennis, iets wat zeker van pas komt in teamvergaderingen, sollicitaties of klantgesprekken.",
     tags: ["Laravel", "Flutter", "Security", "React"],
-    images: [tech1, tech2, tech3, tech4],
+    images: [tech1, tech2, tech3, tech4, tech5],
     github: "https://1drv.ms/f/c/8a4afb5db3b89bc8/Eq6XXS1tlpJLmmGgbeVmzWwBud4mQnJDVSaWN9o9nHju9A?e=QHNanU",
   },
 ];
