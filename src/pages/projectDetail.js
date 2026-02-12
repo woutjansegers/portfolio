@@ -34,6 +34,30 @@ import tech5 from "../Images/tech5.jpg";
 import mpioosterlo from "../Images/mpioosterlo.jpg";
 import mpioosterlo1 from "../Images/mpioosterlo1.jpg";
 import mpioosterlo2 from "../Images/mpioosterlo2.jpg";
+import ALB1 from "../Images/ALB1.jpg";
+import ALB2 from "../Images/ALB2.jpg";
+import ALB3 from "../Images/ALB3.jpg";
+import ALB4 from "../Images/ALB4.jpg";
+import ALB5 from "../Images/ALB5.jpg";
+import WAP1 from "../Images/WAP1.jpg";
+import WAP2 from "../Images/WAP2.jpg";
+import WAP3 from "../Images/WAP3.jpg";
+import WAP4 from "../Images/WAP4.jpg";
+import WAP5 from "../Images/WAP5.jpg";
+import BZR1 from "../Images/BZR1.jpg";
+import BZR2 from "../Images/BZR2.jpg";
+import BZR3 from "../Images/BZR3.jpg";
+import E2D1 from "../Images/E2D1.jpg";
+import E2D2 from "../Images/E2D2.jpg";
+import E2D3 from "../Images/E2D3.jpg";
+import E2D4 from "../Images/E2D4.jpg";
+import E2D5 from "../Images/E2D5.jpg";
+import E2D6 from "../Images/E2D6.jpg";
+import E2D7 from "../Images/E2D7.jpg";
+import E2D8 from "../Images/E2D8.jpg";
+import E2D9 from "../Images/E2D9.jpg";
+import E2D10 from "../Images/E2D10.jpg";
+import E2D11 from "../Images/E2D11.jpg";
 
 const projects = [
   {
@@ -43,6 +67,38 @@ const projects = [
     tags: ["React", "styled-components"],
     images: [portfolio, portfolio1, portfolio2],
     github: "https://portfolio-woutjansegers.netlify.app/",
+  },
+  {
+    id: "easy2drop",
+    title: "Easy2Drop",
+    description: "Voor Skill3 werkten we aan een project in opdracht van Easy2Drop, een bedrijf dat veilige pakketboxen ontwikkelt zodat pakketten betrouwbaar en contactloos geleverd kunnen worden. Het doel van het project was om hun bestaande systeem te optimaliseren en verder uit te breiden, zodat het gebruiksvriendelijker, efficiënter en toekomstbestendiger werd. \n\nWe kregen een bestaande codebase aangeleverd waarmee we aan de slag zijn gegaan om verbeteringen door te voeren en nieuwe functionaliteiten toe te voegen waar nodig. Naast het optimaliseren van het huidige systeem hebben we ook twee nieuwe applicaties ontwikkeld: een desktopapplicatie en een mobiele applicatie, die samen zorgen voor een completere en flexibelere oplossing binnen het Easy2Drop-ecosysteem. \n\nMijn persoonlijke verantwoordelijkheid lag bij het ontwikkelen van de mobiele applicatie, waarvoor ik React Native heb gebruikt. Deze app maakt het mogelijk om het systeem ook onderweg of via mobiele toestellen efficiënt te gebruiken. Tijdens dit onderdeel heb ik veel ervaring opgedaan met het bouwen van cross-platform mobiele applicaties en het integreren ervan binnen een bestaand systeem. Daarnaast leerde ik hoe belangrijk het is om rekening te houden met gebruiksvriendelijkheid en performantie bij mobiele toepassingen, zeker wanneer ze deel uitmaken van een groter, reeds bestaand platform.",
+    tags: ["React Native"],
+    images: [E2D1, E2D2, E2D3, E2D4, E2D5, E2D6, E2D7, E2D8, E2D9, E2D10, E2D11],
+    github: "https://www.youtube.com/watch?v=slftZAMOPCk",
+  },
+  {
+    id: "brandweer-zone-rand",
+    title: "Brandweer Zone Rand",
+    description: " Voor dit project werkten we aan een toepassing voor de brandweer, met als doel het ontwikkelen van een systeem dat hen ondersteunt bij het samenstellen en verdelen van brandpreventiepakketten voor verschillende sectoren. De centrale uitdaging was om een oplossing te bouwen die hen een duidelijk en actueel overzicht biedt van welke pakketten reeds zijn uitgedeeld en welke locaties nog bezocht moeten worden. Op die manier kon de brandweer hun werking beter plannen, opvolgen en organiseren, zonder het risico om locaties over het hoofd te zien. \n\nWe ontwikkelden hiervoor een desktopapplicatie gebouwd met Vue en Electron, waarbij de focus lag op overzicht, gebruiksvriendelijkheid en eenvoud. Het systeem bevat een dashboard waarop in één oogopslag zichtbaar is waar pakketten al geleverd zijn en waar nog actie nodig is. Door deze visuele en gestructureerde aanpak kan de brandweer snel beslissingen nemen en hun planning efficiënter afstemmen op de beschikbare middelen en tijd. \n\nTijdens dit project heb ik veel bijgeleerd over het werken met Vue voor het opbouwen van een overzichtelijke en reactieve gebruikersinterface, en over Electron om webtechnologieën om te zetten naar een volwaardige desktopapplicatie. Daarnaast kreeg ik meer inzicht in het ontwerpen van toepassingen voor professionele gebruikers, waarbij betrouwbaarheid, duidelijkheid en efficiëntie centraal staan.",
+    tags: ["Vue", "Electron"],
+    images: [BZR1, BZR2, BZR3],
+    github: "https://github.com/Thomas-More-Digital-Innovation/2526-ZR-001-Awareness-customer-tracking-system",
+  },
+  {
+    id: "work-area-projection",
+    title: "Work Area Projection",
+    description: "In dit project hebben we een ondersteunende applicatie ontwikkeld die cliënten helpt om zelfstandig te werken met behulp van een beamer en een camera. De beamer projecteert verschillende vormen, zoals cirkels of rechthoeken, op een oppervlak. Binnen deze geprojecteerde vormen moeten de cliënten items op de juiste plaats leggen. \n\nDe camera volgt en analyseert vervolgens de handelingen van de cliënt en controleert of de items correct binnen de juiste vorm zijn geplaatst. Op basis hiervan kan de applicatie feedback geven, waardoor cliënten gestimuleerd worden om zelfstandig en correct te werken. Het systeem is ontworpen om intuïtief en toegankelijk te zijn, zodat het ondersteuning biedt zonder voortdurend toezicht van een begeleider.",
+    tags: ["React", "TypeScript", "Electron"],
+    images: [WAP1, WAP2, WAP3, WAP4, WAP5],
+    github: "https://github.com/Thomas-More-Digital-Innovation/2526-MPI-003-Workarea-projections",
+  },
+  {
+    id: "appies-legobib",
+    title: "Appies Legobib",
+    description: "Voor dit project werkten we in opdracht van het Ziekenhuis van Geel, met als doel het ontwikkelen van twee applicaties die het spel en beheer van legosets voor kinderen gemakkelijker maken. De eerste applicatie is bedoeld voor de patiënten, zodat kinderen eenvoudig legosets kunnen reserveren en hiermee kunnen spelen. De tweede applicatie is gericht op het ziekenhuispersoneel, waarmee het volledige beheer van de legosets wordt geregeld: van welke sets beschikbaar zijn, tot het overzicht van verschillende ziekenhuizen en het bijhouden van het personeel per locatie. \n\nVoor de ontwikkeling van beide applicaties hebben we Angular gebruikt, zodat we een gestructureerde, schaalbare en reactieve interface konden bouwen. De patiëntenapplicatie werd bewust eenvoudig en intuïtief ontworpen, zodat kinderen zelfstandig en zonder hulp kunnen reserveren en spelen. De beheerdersapplicatie biedt daarentegen uitgebreide functionaliteit om de beschikbaarheid van legosets te beheren en alle locaties en medewerkers overzichtelijk te organiseren. \n\nTijdens dit project heb ik veel ervaring opgedaan met Angular, met name op het gebied van componentgebaseerde architectuur, state management en het ontwikkelen van zowel gebruikersgerichte als administratieve interfaces. Daarnaast heb ik geleerd hoe belangrijk het is om een gebruiksvriendelijke en toegankelijke ervaring te creëren voor kinderen, terwijl tegelijkertijd een krachtig en overzichtelijk beheersysteem wordt aangeboden voor het personeel van het ziekenhuis.",
+    tags: ["Angular"],
+    images: [ALB1, ALB2, ALB3, ALB4, ALB5],
+    github: "https://github.com/itfactory-tm/2025-SWE-Monorepo-09",
   },
   {
     id: "pikassa",

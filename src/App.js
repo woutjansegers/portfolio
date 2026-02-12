@@ -12,6 +12,10 @@ import Pikassa from './Images/pikassa3.png'
 import mpioosterlo from './Images/mpioosterlo.jpg'
 import {motion} from "framer-motion";
 import SimpleParticles from "./components/heroParticles";
+import WAP1 from "./Images/WAP1.jpg";
+import BZR1 from "./Images/BZR1.jpg";
+import legobib from "./Images/ALB1.jpg";
+import Easy2Drop from "./Images/Easy2Drop_logo.png";
 
 
 // Keyframes animations
@@ -541,11 +545,11 @@ export default function Portfolio() {
 
     const projects = [
         {
-            title: "ExploreMore",
-            description: "Internationale studenten rondleiden met behulp van AR.",
-            tags: ["Flutter", "Unity", "Vuforia"],
-            image: AR3,
-            github: "https://github.com/Thomas-More-Digital-Innovation/2324-ITF-001-AR-rondleiding",
+            title: "Easy2Drop",
+            description: "Meerdere applicaties voor de levering van pakketten en het beheer van pakketboxen.",
+            tags: ["React Native"],
+            image: Easy2Drop,
+            github: "https://www.youtube.com/watch?v=slftZAMOPCk",
         },
         {
             title: "Pikassa",
@@ -555,6 +559,20 @@ export default function Portfolio() {
             github: "https://github.com/Thomas-More-Digital-Innovation/2425-TM-012-Eenvoudig-kassasysteem-voor-de-Wagenwinkel",
         },
         {
+            title: "ExploreMore",
+            description: "Internationale studenten rondleiden met behulp van AR.",
+            tags: ["Flutter", "Unity", "Vuforia"],
+            image: AR3,
+            github: "https://github.com/Thomas-More-Digital-Innovation/2324-ITF-001-AR-rondleiding",
+        },
+        {
+            title: "Brandweer Zone Rand",
+            description: "Een dashboard dat overzicht biedt over nog te leveren brandpreventiepakketten.",
+            tags: ["Vue", "Electron"],
+            image: BZR1,
+            github: "https://github.com/Thomas-More-Digital-Innovation/2526-ZR-001-Awareness-customer-tracking-system",
+        },
+        {
             title: "Portfolio",
             description: "Een responsive portfolio gebouwd met React en styled-components.",
             tags: ["React", "styled-components"],
@@ -562,11 +580,25 @@ export default function Portfolio() {
             github: "https://portfolio-woutjansegers.netlify.app/",
         },
         {
+            title: "Work Area Projection",
+            description: "Een applicatie die cliënten ondersteunt om zelfstandig en correct te tellen.",
+            tags: ["React", "TypeScript", "Electron"],
+            image: WAP1,
+            github: "https://github.com/Thomas-More-Digital-Innovation/2526-MPI-003-Workarea-projections",
+        },
+        {
             title: "Aerolytics",
             description: "Een drone-bedrijf ondersteunen met hun nieuwste project",
             tags: ["AWS", "Python", "Raspberry-pi"],
             image: drone,
             github: "https://www.aerolytics.be/",
+        },
+        {
+            title: "Appies Legobib",
+            description: "Een applicatie voor legosets te reserveren en een applicatie om deze te beheren.",
+            tags: ["Angular"],
+            image: legobib,
+            github: "https://github.com/itfactory-tm/2025-SWE-Monorepo-09",
         },
         {
             title: "De Beerse Bende",
@@ -714,7 +746,7 @@ export default function Portfolio() {
                             <SkillsContainer>
                                 <SkillsTitle>Vaardigheden</SkillsTitle>
                                 <SkillsTags>
-                                    {['React', 'JavaScript', 'Laravel', 'PHP', 'Flutter', 'Figma'].map((skill) => (
+                                    {['React', 'Vue', 'Laravel', 'JavaScript', 'Flutter', 'Figma'].map((skill) => (
                                         <SkillTag key={skill}>
                                             {skill}
                                         </SkillTag>
