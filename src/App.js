@@ -1,21 +1,22 @@
 import { useState, useEffect} from 'react';
 import styled, { createGlobalStyle, keyframes } from 'styled-components';
-import { ArrowUp, Menu, X, ExternalLink} from 'lucide-react';
+import { ArrowUp, Menu, X, ExternalLink, Download } from 'lucide-react';
 import wout from './Images/wout1.jpeg';
-import beersebende from './Images/beersebende.png';
-import duffalos from './Images/duffalo.png';
-import portfolio from './Images/portfolio.jpg';
-import tech from './Images/tech.jpg';
-import drone from './Images/drone.jpg';
-import AR3 from './Images/AR3.jpg'
-import Pikassa from './Images/pikassa3.png'
-import mpioosterlo from './Images/mpioosterlo.jpg'
 import {motion} from "framer-motion";
 import SimpleParticles from "./components/heroParticles";
-import WAP1 from "./Images/WAP1.jpg";
-import BZR1 from "./Images/BZR1.jpg";
-import legobib from "./Images/ALB1.jpg";
-import Easy2Drop from "./Images/Easy2Drop_logo.png";
+import CanAssist1 from "./Assets/ImagesStage/CanAssist1.png";
+import CanAssist2 from "./Assets/ImagesStage/CanAssist2.png";
+import CanAssist3 from "./Assets/ImagesStage/CanAssist3.png";
+import CanAssist4 from "./Assets/ImagesStage/CanAssist4.png";
+import CanAssist5 from "./Assets/ImagesStage/CanAssist5.jpeg";
+import CanAssist6 from "./Assets/ImagesStage/CanAssist6.png";
+import CanAssist0 from "./Assets/ImagesStage/CanAssist0.png";
+import CanAssistLogo from "./Assets/ImagesStage/CanAssist-Logo (1).jpg";
+import StageProjectPlan from "./Assets/StageDocumenten/ProjectPlan-Document-WoutJansegers.docx";
+import StageRealization from "./Assets/StageDocumenten/Realization-Document-WoutJansegers.docx";
+import StageReflection from "./Assets/StageDocumenten/Reflection-Document-WoutJansegers.docx";
+import ProjectModal from "./components/ProjectModal";
+import { projects } from "./projectsData";
 
 
 // Keyframes animations
@@ -32,12 +33,38 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
   }
 
+  :root {
+    color-scheme: light;
+    --bg: #f6f7fb;
+    --surface: rgba(255, 255, 255, 0.82);
+    --surface-strong: #ffffff;
+    --text: #111827;
+    --muted: #5b6474;
+    --border: rgba(15, 23, 42, 0.08);
+    --accent: #334155;
+    --accent-strong: #0f766e;
+    --accent-soft: #dff4ef;
+    --shadow: 0 20px 60px rgba(15, 23, 42, 0.08);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, 
-      Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    color: #333;
-    background-color: #f8f9fa;
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    color: var(--text);
+    background:
+      radial-gradient(circle at top left, rgba(15, 118, 110, 0.08), transparent 28%),
+      radial-gradient(circle at top right, rgba(51, 65, 85, 0.08), transparent 22%),
+      var(--bg);
     line-height: 1.6;
+    text-rendering: optimizeLegibility;
+  }
+
+  body::selection {
+    background: var(--accent-strong);
+    color: white;
   }
 
   a {
@@ -72,8 +99,9 @@ const Navigation = styled.nav`
   z-index: 100;
   transition: all 0.3s ease;
   padding: ${props => props.$scrolled ? '10px 0' : '20px 0'};
-  background-color: ${props => props.$scrolled ? 'white' : 'transparent'};
-  box-shadow: ${props => props.$scrolled ? '0 2px 10px rgba(0, 0, 0, 0.1)' : 'none'};
+  background-color: ${props => props.$scrolled ? 'rgba(255, 255, 255, 0.86)' : 'transparent'};
+  backdrop-filter: ${props => props.$scrolled ? 'blur(18px)' : 'none'};
+  box-shadow: ${props => props.$scrolled ? '0 10px 30px rgba(15, 23, 42, 0.08)' : 'none'};
 `;
 
 const NavContainer = styled.div`
@@ -85,7 +113,7 @@ const NavContainer = styled.div`
 const Logo = styled.a`
   font-size: 24px;
   font-weight: 700;
-  color: #4f46e5;
+  color: #0f766e;
 `;
 
 const NavLinks = styled.div`
@@ -98,12 +126,12 @@ const NavLinks = styled.div`
 `;
 
 const NavLink = styled.a`
-  color: ${props => props.$active ? '#4f46e5' : '#666'};
+  color: ${props => props.$active ? '#0f766e' : '#5b6474'};
   font-weight: ${props => props.$active ? '500' : '400'};
   transition: color 0.3s ease;
 
   &:hover {
-    color: #4f46e5;
+    color: #0f766e;
   }
 `;
 
@@ -124,9 +152,9 @@ const MobileMenu = styled.div`
   top: 100%;
   left: 0;
   width: 100%;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.96);
   padding: 16px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.12);
   animation: ${fadeIn} 0.3s ease-out forwards;
   
   @media (min-width: 768px) {
@@ -147,7 +175,10 @@ const HeroSection = styled.section`
     justify-content: center;
     position: relative;
     overflow: hidden;
-    background: linear-gradient(135deg, #ede9fe, #e0f2fe);
+    background:
+      radial-gradient(circle at top left, rgba(15, 118, 110, 0.18), transparent 30%),
+      radial-gradient(circle at bottom right, rgba(51, 65, 85, 0.16), transparent 28%),
+      linear-gradient(135deg, #f8fafc, #eef2ff);
     transform: translateZ(0); /* Force hardware acceleration */
     will-change: transform; /* Optimize for animations */
 `;
@@ -164,13 +195,13 @@ const HeroTitle = styled.h1`
   animation: ${fadeIn} 0.8s ease-out forwards;
   
   span {
-    color: #4f46e5;
+    color: #0f766e;
   }
 `;
 
 const HeroSubtitle = styled.p`
   font-size: clamp(1.2rem, 2vw, 1.8rem);
-  color: #666;
+  color: #5b6474;
   margin-bottom: 32px;
   max-width: 600px;
   margin-left: auto;
@@ -190,7 +221,7 @@ const ButtonContainer = styled.div`
 `;
 
 const PrimaryButton = styled.button`
-    background-color: #4f46e5;
+  background-color: #0f766e;
     color: white;
     padding: 12px 24px;
     border-radius: 50px;
@@ -203,37 +234,65 @@ const PrimaryButton = styled.button`
     box-shadow: 0 4px 6px rgba(79, 70, 229, 0.2);
 
     &:hover {
-        background-color: #4338ca;
-        box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+        background-color: #115e59;
+        box-shadow: 0 4px 12px rgba(15, 118, 110, 0.3);
         transform: translateY(-2px);
     }
 `;
 
 const Section = styled.section`
-  padding: 80px 0;
-  background-color: ${props => props.$background || 'white'};
+  padding-top: 20px;
+  padding-bottom: 40px;
+  background-color: ${props => props.$background || 'transparent'};
+`;
+
+const StageLinkChip = styled.a`
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: rgba(15, 118, 110, 0.08);
+  color: var(--accent-strong);
+  font-weight: 600;
+  border: 1px solid rgba(15, 118, 110, 0.18);
+
+  &:hover {
+    background: rgba(15, 118, 110, 0.12);
+  }
 `;
 
 const AboutContainer = styled.div`
   display: flex;
   flex-direction: column;
+  gap: 32px;
+`;
+
+const AboutTopGrid = styled.div`
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
   align-items: center;
-  gap: 48px;
-  
-  @media (min-width: 768px) {
-    flex-direction: row;
+
+  @media (min-width: 900px) {
+    grid-template-columns: minmax(320px, 0.95fr) minmax(0, 1.05fr);
+  }
+`;
+
+const AboutPanelsGrid = styled.div`
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  width: 100%;
+
+  @media (min-width: 900px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 `;
 
 const ImageContainer = styled.div`
   width: 100%;
-  margin-bottom: 32px;
   position: relative;
-  
-  @media (min-width: 768px) {
-    width: 50%;
-    margin-bottom: 0;
-  }
 `;
 
 const ProfileImage = styled.div`
@@ -251,38 +310,8 @@ const ProfileImage = styled.div`
   }
 `;
 
-const ShapeAccent1 = styled.div`
-  position: absolute;
-  bottom: -24px;
-  right: -24px;
-  width: 120px;
-  height: 120px;
-  background-color: #4f46e5;
-  border-radius: 8px;
-  transform: rotate(6deg);
-  opacity: 0.2;
-  z-index: 1;
-`;
-
-const ShapeAccent2 = styled.div`
-  position: absolute;
-  top: -24px;
-  left: -24px;
-  width: 80px;
-  height: 80px;
-  background-color: #818cf8;
-  border-radius: 8px;
-  transform: rotate(-12deg);
-  opacity: 0.2;
-  z-index: 1;
-`;
-
 const AboutContent = styled.div`
   width: 100%;
-  
-  @media (min-width: 768px) {
-    width: 50%;
-  }
 `;
 
 const SectionTitle = styled.h2`
@@ -299,20 +328,25 @@ const SectionTitle = styled.h2`
     left: 0;
     width: 48px;
     height: 4px;
-    background-color: #818cf8;
+    background-color: #0f766e;
   }
 `;
 
-const CenteredSectionTitle = styled(SectionTitle)`
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
-  margin-bottom: 16px;
+const FooterTitle = styled.h2`
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+  position: relative;
+  display: inline-block;
   
   &::after {
-    left: 50%;
-    transform: translateX(-50%);
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 36px;
+    width: 48px;
+    height: 4px;
+    background-color: #0f766e;
   }
 `;
 
@@ -338,15 +372,8 @@ const AnimatedTextChange = ({ texts, interval }) => {
     );
 };
 
-const SectionSubtitle = styled.p`
-  text-align: center;
-  color: #666;
-  max-width: 600px;
-  margin: 0 auto 48px auto;
-`;
-
 const Text = styled.p`
-  color: #666;
+  color: #4b5563;
   margin-bottom: 24px;
 `;
 
@@ -367,11 +394,262 @@ const SkillsTags = styled.div`
 `;
 
 const SkillTag = styled.span`
-  background-color: #ede9fe;
-  color: #4f46e5;
+  background-color: #e6f6f4;
+  color: #0f766e;
   padding: 8px 16px;
   border-radius: 50px;
   font-size: 0.875rem;
+`;
+
+const ContentGrid = styled.div`
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  width: 100%;
+`;
+
+const InfoCard = styled.div`
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 24px;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(12px);
+`;
+
+const CardEyebrow = styled.p`
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--accent-strong);
+  margin-bottom: 12px;
+`;
+
+const CardTitle = styled.h3`
+  font-size: 1.35rem;
+  margin-bottom: 12px;
+  color: var(--text);
+`;
+
+const StatList = styled.ul`
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+  margin-top: 18px;
+`;
+
+const StatItem = styled.li`
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 18px 18px 16px;
+  border-radius: 18px;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  background: rgba(255, 255, 255, 0.78);
+  color: var(--muted);
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.04);
+
+  strong {
+    color: var(--accent-strong);
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  span {
+    line-height: 1.7;
+  }
+`;
+
+const PillRow = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
+`;
+
+const Pill = styled.span`
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+  font-size: 0.9rem;
+`;
+
+const Timeline = styled.div`
+  display: grid;
+  gap: 16px;
+  margin-top: 24px;
+`;
+
+const TimelineItem = styled.div`
+  padding: 18px 20px;
+  border-radius: 18px;
+  background: white;
+  border: 1px solid var(--border);
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.04);
+`;
+
+const TimelineTitle = styled.h4`
+  margin-bottom: 8px;
+  font-size: 1.05rem;
+  color: var(--text);
+`;
+
+const ContactTitle = styled.h4`
+  margin-bottom: 20px;
+  font-size: 1.05rem;
+  color: white);
+
+`;
+
+const TimelineMeta = styled.p`
+  color: var(--muted);
+  margin-bottom: 10px;
+  font-size: 0.95rem;
+`;
+
+const StageGalleryGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-top: 18px;
+`;
+
+const StageFigure = styled.figure`
+  overflow: hidden;
+  border-radius: 20px;
+  background: white;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+`;
+
+const StageFigureImage = styled.img`
+  width: 100%;
+  height: 320px;
+  object-fit: contain;
+  background: #eef2f3;
+  padding: 12px;
+  display: block;
+`;
+
+const StageFigureCaption = styled.figcaption`
+  padding: 14px 16px 16px;
+  display: grid;
+  gap: 6px;
+
+  strong {
+    color: var(--text);
+    font-size: 1rem;
+  }
+
+  span {
+    color: var(--muted);
+    line-height: 1.6;
+    font-size: 0.95rem;
+  }
+`;
+
+const StageDocsGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  margin-top: 18px;
+`;
+
+const StageDocCard = styled.a`
+  display: grid;
+  gap: 8px;
+  padding: 20px;
+  border-radius: 18px;
+  background: white;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    border-color: rgba(15, 118, 110, 0.35);
+  }
+
+  strong {
+    color: var(--text);
+    font-size: 1rem;
+  }
+
+  span {
+    color: var(--muted);
+    font-size: 0.92rem;
+  }
+`;
+
+const DocDownloadRow = styled.span`
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--accent-strong) !important;
+  font-weight: 700;
+`;
+
+const ContactGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+  padding-bottom: 20px;
+`;
+
+const ContactCard = styled.a`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 22px;
+  border-radius: 20px;
+  background: white;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  transition: transform 0.25s ease, border-color 0.25s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    border-color: rgba(15, 118, 110, 0.25);
+  }
+
+  strong {
+    color: var(--text);
+    font-size: 1.05rem;
+  }
+
+  span {
+    color: var(--muted);
+  }
+`;
+
+const InternshipSubHeading = styled.h3`
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: var(--text);
+
+  span {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--accent-strong);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 8px;
+  }
+`;
+
+const AbsoluteBottomRight = styled.div`
+  position: absolute;
+  bottom: 20px; /* Adjust as needed */
+  right: 20px; /* Adjust as needed */
 `;
 
 const ProjectsGrid = styled.div`
@@ -477,7 +755,7 @@ const ScrollToTopButton = styled.button`
   position: fixed;
   bottom: 24px;
   right: 24px;
-  background-color: #4f46e5;
+  background-color: #0f766e;
   color: white;
   padding: 12px;
   border-radius: 50%;
@@ -489,7 +767,7 @@ const ScrollToTopButton = styled.button`
   animation: ${fadeIn} 0.3s ease-out forwards;
   
   &:hover {
-    background-color: #4338ca;
+    background-color: #115e59;
     transform: translateY(-4px);
   }
 `;
@@ -498,12 +776,13 @@ export default function Portfolio() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [scrollPosition, setScrollPosition] = useState(0);
     const [activeSection, setActiveSection] = useState('Home');
+    const [selectedProject, setSelectedProject] = useState(null);
 
     useEffect(() => {
         const handleScroll = () => {
             setScrollPosition(window.scrollY);
 
-            const sections = ['Home', 'Over Mij', 'Projecten'];
+            const sections = ['Home', 'About', 'Internship', 'Projects', 'Contact'];
             const currentSection = sections.find(section => {
                 const element = document.getElementById(section);
                 if (element) {
@@ -543,92 +822,129 @@ export default function Portfolio() {
         setIsMenuOpen(false);
     };
 
-    const projects = [
-        {
-            title: "Easy2Drop",
-            description: "Meerdere applicaties voor de levering van pakketten en het beheer van pakketboxen.",
-            tags: ["React Native"],
-            image: Easy2Drop,
-            github: "https://www.youtube.com/watch?v=slftZAMOPCk",
-        },
-        {
-            title: "Pikassa",
-            description: "Een kassasysteem voor mensen met een beperking.",
-            tags: ["Laravel", "PHP", "sqlite"],
-            image: Pikassa,
-            github: "https://github.com/Thomas-More-Digital-Innovation/2425-TM-012-Eenvoudig-kassasysteem-voor-de-Wagenwinkel",
-        },
-        {
-            title: "ExploreMore",
-            description: "Internationale studenten rondleiden met behulp van AR.",
-            tags: ["Flutter", "Unity", "Vuforia"],
-            image: AR3,
-            github: "https://github.com/Thomas-More-Digital-Innovation/2324-ITF-001-AR-rondleiding",
-        },
-        {
-            title: "Brandweer Zone Rand",
-            description: "Een dashboard dat overzicht biedt over nog te leveren brandpreventiepakketten.",
-            tags: ["Vue", "Electron"],
-            image: BZR1,
-            github: "https://github.com/Thomas-More-Digital-Innovation/2526-ZR-001-Awareness-customer-tracking-system",
-        },
-        {
-            title: "Portfolio",
-            description: "Een responsive portfolio gebouwd met React en styled-components.",
-            tags: ["React", "styled-components"],
-            image: portfolio,
-            github: "https://portfolio-woutjansegers.netlify.app/",
-        },
-        {
-            title: "Work Area Projection",
-            description: "Een applicatie die cliënten ondersteunt om zelfstandig en correct te tellen.",
-            tags: ["React", "TypeScript", "Electron"],
-            image: WAP1,
-            github: "https://github.com/Thomas-More-Digital-Innovation/2526-MPI-003-Workarea-projections",
-        },
-        {
-            title: "Aerolytics",
-            description: "Een drone-bedrijf ondersteunen met hun nieuwste project",
-            tags: ["AWS", "Python", "Raspberry-pi"],
-            image: drone,
-            github: "https://www.aerolytics.be/",
-        },
-        {
-            title: "Appies Legobib",
-            description: "Een applicatie voor legosets te reserveren en een applicatie om deze te beheren.",
-            tags: ["Angular"],
-            image: legobib,
-            github: "https://github.com/itfactory-tm/2025-SWE-Monorepo-09",
-        },
-        {
-            title: "De Beerse Bende",
-            description: "Een theater helpen met het maken van een website.",
-            tags: ["Laravel", "PHP", "sqlite", "Figma"],
-            image: beersebende,
-            github: "https://debeersebende.bramserre.be/",
-        },
-        {
-            title: "De duffalo's prototype",
-            description: "Een voetbalploeg helpen met het maken van een website.",
-            tags: ["Figma", "StarUML"],
-            image: duffalos,
-            github: "https://www.figma.com/design/oRphuh5sZdtGpIro8JO4PY/SVW3---Prototyping---De-Duffalo-s?node-id=296-553&t=6xCZsPqWRnBR1ywU-1",
-        },
-        {
-            title: "MPI Oosterlo",
-            description: "Jobcoaches ondersteunen met behulp van een opvolgingssysteem voor clienten.",
-            tags: ["Laravel", "PHP", "sqlite"],
-            image: mpioosterlo,
-            github: "https://github.com/Thomas-More-Digital-Innovation/2425-MPI-002-jobcoachOndersteuning",
-        },
-        {
-            title: "Techtalks",
-            description: "Mijn kennis verbreden met nieuwe technologieën.",
-            tags: ["Laravel", "Flutter", "Security", "React"],
-            image: tech,
-            github: "https://1drv.ms/f/c/8a4afb5db3b89bc8/Eq6XXS1tlpJLmmGgbeVmzWwBud4mQnJDVSaWN9o9nHju9A?e=QHNanU",
-        },
-    ];
+        const profileHighlights = [
+          {
+            label: "Focus",
+            value: "Front-end development, UX and practical digital solutions",
+          },
+          {
+            label: "Workflow",
+            value: "From analysis and design to implementation, testing and refinement",
+          },
+          {
+            label: "Value",
+            value: "Flexible in teams and strong in collaboration, clear communication and quality-driven delivery",
+          },
+        ];
+
+        const stageGallery = [
+          {
+            image: CanAssist0,
+            title: "Original mobile dashboard",
+            caption: "Original dashboard of the mobile application",
+          },
+          {
+            image: CanAssist1,
+            title: "Mobile app dashboard",
+            caption: "Dashboard of the mobile application with the new branding and clearer navigation.",
+          },
+          {
+            image: CanAssist2,
+            title: "All tasks screen",
+            caption: "The all-tasks screen where users can quickly find and follow up their tasks.",
+          },
+          {
+            image: CanAssist4,
+            title: "Modify task with branching",
+            caption: "The modify-task screen where task branching becomes visible and manageable.",
+          },
+          {
+            image: CanAssist5,
+            title: "CanAssist office",
+            caption: "Photo of the workplace during my internship in Victoria, Canada.",
+          },
+          {
+            image: CanAssistLogo,
+            title: "CanAssist branding",
+            caption: "CanAssist logo used as a reference for the visual redesign and consistent brand application in the app.",
+          },
+          {
+            image: CanAssist3,
+            title: "Admin dashboard design",
+            caption: "Figma design of the add-task screen for the admin dashboard. This is a design proposal, not a working implementation.",
+          },
+          {
+            image: CanAssist6,
+            title: "Admin analytics screen design",
+            caption: "Figma design of the analytics screen for the admin dashboard. This is a design proposal, not a working implementation.",
+          },
+        ];
+
+        const stageDownloads = [
+          {
+            title: "Project Plan",
+            description: "Goals, scope and approach of the internship.",
+            href: StageProjectPlan,
+            fileName: "ProjectPlan-Document-WoutJansegers.docx",
+          },
+          {
+            title: "Realization Document",
+            description: "Technical execution, design decisions and completed parts.",
+            href: StageRealization,
+            fileName: "Realization-Document-WoutJansegers.docx",
+          },
+          {
+            title: "Reflection Document",
+            description: "Substantive and personal reflection on the internship period.",
+            href: StageReflection,
+            fileName: "Reflection-Document-WoutJansegers.docx",
+          },
+        ];
+
+        const stageMilestones = [
+          {
+            title: "Organization and problem",
+            meta: "CanAssist · Victoria, British Columbia",
+            text: "CanAssist develops practical technology for people with disabilities. For this internship I worked on CanPlan, a mobile app that supports people with cognitive challenges through step-by-step planning. The existing version was fully offline and had an outdated interface, limited expandability and no cloud or admin layer for future collaboration.",
+          },
+          {
+            title: "My work",
+            meta: "Accessibility redesign and new feature design",
+            text: "Most of my internship focused on rebranding, accessibility redesign and shaping new and improved features in the mobile app. I improved screen flows, visual consistency and usability for the CanPlan target audience.",
+          },
+          {
+            title: "Technical research",
+            meta: "Backend and hosting options explored",
+            text: "For backend and cloud expansion I carried out comparative research into Firebase, Supabase, a custom backend and hosting options. Important: no final technical choice was made during my internship. My output was a well-supported overview of options, benefits and trade-offs.",
+          },
+          {
+            title: "Outcome and reflection",
+            meta: "Improved app foundation and clear next steps",
+            text: "The internship delivered a more modern and accessible app experience, concrete feature improvements and a strong research base for future backend and dashboard decisions. Personally, I grew in independence, communication and professional documentation.",
+          },
+        ];
+
+        const contactLinks = [
+          {
+            key: 'email',
+            title: "Email",
+            text: "wjansege@gmail.com",
+            href: "mailto:wjansege@gmail.com",
+          },
+          {
+            key: 'linkedin',
+            title: "Wout Jansegers • LinkedIn",
+            text: "Open my LinkedIn profile.",
+            href: "https://www.linkedin.com/in/wout-jansegers-9806122a2/",
+          },
+          {
+            key: 'cv',
+            title: "Download Resume",
+            text: "Download my current resume.",
+            href: "/Resume_Wout_Jansegers.pdf",
+            download: true,
+          },
+        ];
 
     return (
         <>
@@ -644,7 +960,7 @@ export default function Portfolio() {
 
                         {/* Desktop Menu */}
                         <NavLinks>
-                            {['Home', 'Over Mij', 'Projecten'].map((item) => (
+                            {['Home', 'About', 'Internship', 'Projects', 'Contact'].map((item) => (
                                 <NavLink
                                     key={item}
                                     href={`#${item}`}
@@ -666,7 +982,7 @@ export default function Portfolio() {
                     {isMenuOpen && (
                         <MobileMenu>
                             <MobileMenuLinks>
-                                {['Home', 'Over Mij', 'Projecten'].map((item) => (
+                                {['Home', 'About', 'Internship', 'Projects', 'Contact'].map((item) => (
                                     <NavLink
                                         key={item}
                                         href={`#${item}`}
@@ -702,11 +1018,11 @@ export default function Portfolio() {
                             />
                         </HeroSubtitle>
                         <ButtonContainer>
-                            <PrimaryButton onClick={() => scrollToSection('Projecten')}>
-                                Bekijk mijn werk
+                            <PrimaryButton onClick={() => scrollToSection('Projects')}>
+                              View my work
                             </PrimaryButton>
-                            <PrimaryButton onClick={() => scrollToSection('Over Mij')}>
-                                Over Mij
+                            <PrimaryButton onClick={() => scrollToSection('Internship')}>
+                              Internship
                             </PrimaryButton>
                         </ButtonContainer>
                     </HeroContent>
@@ -714,103 +1030,302 @@ export default function Portfolio() {
             </HeroSection>
 
             {/* About Section */}
-            <Section id="Over Mij">
-                <Container>
-                    <AboutContainer>
-                        <ImageContainer>
-                            <ProfileImage>
-                                <img src={wout} alt="Profile" />
-                            </ProfileImage>
-                            <ShapeAccent1 />
-                            <ShapeAccent2 />
-                        </ImageContainer>
+            <Section id="About" $background="#F6F7FB">
+              <Container>
+                <AboutContainer>
+                  <AboutTopGrid>
+                    <ImageContainer>
+                      <ProfileImage>
+                        <img src={wout} alt="Profile" />
+                      </ProfileImage>
+                    </ImageContainer>
 
-                        <AboutContent>
-                            <SectionTitle>Over Mij</SectionTitle>
+                    <AboutContent>
+                      <SectionTitle>About Me</SectionTitle>
 
-                            <Text>
-                                Ik ben een enthousiaste digital innovation student met een passie voor praktijkgericht werken.
-                                Ik vind het geweldig om nieuwe technologieën te ontdekken en toe te passen in echte projecten.
-                            </Text>
+                      <Text>
+                        I am a digital innovation student with a clear preference for front-end development,
+                        user-friendly interfaces and projects that create real-world value.
+                      </Text>
 
-                            <Text>
-                                Mijn interesse ligt vooral bij front-end development, al probeer ik van alles wat mee te pikken. IT en innovatie boeien mij enorm, en ik blijf mezelf voortdurend ontwikkelen om steeds betere oplossingen te kunnen maken.
-                                In mijn vrije tijd speel ik volleybal, waar ik niet alleen fysiek bezig ben, maar ook leer samenwerken en communiceren, iets wat ook in IT-projecten van pas komt. </Text>
-                            <SkillsTitle>Naar de Toekomst</SkillsTitle>
+                      <Text>
+                        My strongest motivation comes from turning analysis into a clear solution: an interface that feels logical,
+                        remains maintainable and looks professional. That is why I pay close attention to structure, consistency and the end-user experience.
+                      </Text>
 
-                            <Text>
-                               Ik wil blijven bijleren, experimenteren met nieuwe technologieën en mijn vaardigheden verder aanscherpen. Ik kijk dan ook enorm uit naar mijn stage volgend jaar, een nieuwe kans om mijn kennis toe te passen en verder uit te breiden.
-                            </Text>
+                      <SkillsContainer>
+                        <SkillsTitle>Skills</SkillsTitle>
+                        <SkillsTags>
+                          {['React', 'Vue', 'Laravel', 'JavaScript', 'Flutter', 'Figma'].map((skill) => (
+                            <SkillTag key={skill}>
+                              {skill}
+                            </SkillTag>
+                          ))}
+                        </SkillsTags>
+                      </SkillsContainer>
 
+                      <PrimaryButton onClick={handleDownload}>
+                        Download Resume <ExternalLink size={16} />
+                      </PrimaryButton>
+                    </AboutContent>
+                  </AboutTopGrid>
 
-                            <SkillsContainer>
-                                <SkillsTitle>Vaardigheden</SkillsTitle>
-                                <SkillsTags>
-                                    {['React', 'Vue', 'Laravel', 'JavaScript', 'Flutter', 'Figma'].map((skill) => (
-                                        <SkillTag key={skill}>
-                                            {skill}
-                                        </SkillTag>
-                                    ))}
-                                </SkillsTags>
-                            </SkillsContainer>
+                  <AboutPanelsGrid>
+                    <InfoCard>
+                      <CardEyebrow>Personal profile</CardEyebrow>
+                      <CardTitle>What I aim for</CardTitle>
+                      <Text>
+                        Alongside technical work, I place strong value on collaboration, processing feedback and clear communication.
+                        This combination helps me take responsibility in team projects and work toward results in a focused way.
+                      </Text>
+                      <Text>
+                        I look for assignments where analysis, design and implementation come together. I prefer an iterative approach,
+                        so I can process feedback early and improve the quality of the final result.
+                      </Text>
+                      <PillRow>
+                        {['UX', 'Front-end', 'Collaboration', 'Quality'].map((item) => (
+                          <Pill key={item}>{item}</Pill>
+                        ))}
+                      </PillRow>
+                    </InfoCard>
 
-                            <PrimaryButton onClick={handleDownload}>
-                                Download Resume <ExternalLink size={16} />
-                            </PrimaryButton>
-                        </AboutContent>
-                    </AboutContainer>
-                </Container>
+                    <InfoCard>
+                      <CardEyebrow>Highlights</CardEyebrow>
+                      <CardTitle>What you can expect from me</CardTitle>
+                      <StatList>
+                        {profileHighlights.map((item) => (
+                          <StatItem key={item.label}>
+                            <strong>{item.label}</strong>
+                            <span>{item.value}</span>
+                          </StatItem>
+                        ))}
+                      </StatList>
+                    </InfoCard>
+                  </AboutPanelsGrid>
+
+                </AboutContainer>
+              </Container>
+            </Section>
+ 
+            {/* Internship Section */}
+            <Section id="Internship" $background="#FBFBFD">
+              <Container>
+                <SectionTitle>Internship</SectionTitle>
+                <InternshipSubHeading>
+                  CanPlan redesign, accessibility and research
+                </InternshipSubHeading>
+
+                <InternshipSubHeading>
+                  <span>Introduction</span>
+                </InternshipSubHeading>
+                <ContentGrid>
+                  <InfoCard style={{ position: 'relative' }}>
+                    <TimelineTitle>
+                      Context and role at CanAssist
+                    </TimelineTitle>
+                    <Text>
+                      CanAssist operates in Victoria, British Columbia, and develops practical technology for people with disabilities.
+                      Within that context I worked as an App Design Consultant on CanPlan, a mobile application that helps users complete tasks step by step with visual, auditory and textual support.
+                    </Text>
+                    <Text>
+                      The core problem was that the existing application worked fully offline, which made future expansion more difficult.
+                      The interface and branding also needed to become more modern and accessible. My role was to help shape that redesign while also researching what a scalable future could look like.
+                    </Text>
+                    <PillRow>
+                      {['CanPlan', 'Accessibility', 'Rebranding', 'Independence'].map((item) => (
+                        <Pill key={item}>{item}</Pill>
+                      ))}
+                    </PillRow>
+                    <AbsoluteBottomRight>
+                      <StageLinkChip
+                        href="https://www.linkedin.com/company/canassist-at-uvic/posts/?feedView=all"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        CanAssist LinkedIn <ExternalLink size={16} />
+                      </StageLinkChip>
+                    </AbsoluteBottomRight>
+                  </InfoCard>
+                </ContentGrid>
+
+                <InternshipSubHeading style={{ marginTop: '48px' }}>
+                  <span>Technical work</span>
+                </InternshipSubHeading>
+                <InfoCard>
+                  <TimelineTitle>
+                    Research, design and implementation
+                  </TimelineTitle>
+                  <Text>
+                    I researched how CanPlan could evolve in the future with cloud support, synchronization and administrative capabilities.
+                    I compared backend options, documented trade-offs and supported decision-making. No final technical choice was made during my internship.
+                  </Text>
+                  <StatList>
+                    <StatItem>
+                      <strong>Research</strong>
+                      <span>Comparing Firebase, Supabase and a custom backend based on scalability, flexibility, security and data model fit.</span>
+                    </StatItem>
+                    <StatItem>
+                      <strong>Design</strong>
+                      <span>Rebranding and redesign of the mobile app with more focus on accessibility, consistency and cognitive simplicity.</span>
+                    </StatItem>
+                    <StatItem>
+                      <strong>Development</strong>
+                      <span>Shaping app updates and feature designs, including branching task flows and improved task-management experiences.</span>
+                    </StatItem>
+                    <StatItem>
+                      <strong>Testing</strong>
+                      <span>Checking usability, accessibility and task-structure logic based on supervisor feedback and iterative design refinement.</span>
+                    </StatItem>
+                  </StatList>
+                </InfoCard>
+
+                <Timeline>
+                  {stageMilestones.map((item) => (
+                    <TimelineItem key={item.title}>
+                      <TimelineTitle>{item.title}</TimelineTitle>
+                      <TimelineMeta>{item.meta}</TimelineMeta>
+                      <Text>{item.text}</Text>
+                    </TimelineItem>
+                  ))}
+                </Timeline>
+
+                <InternshipSubHeading style={{ marginTop: '48px' }}>
+                  <span>Outcome</span>
+                </InternshipSubHeading>
+                <ContentGrid>
+                  <InfoCard>
+                    <TimelineTitle>
+                      What this internship delivered
+                    </TimelineTitle>
+                    <Text>
+                      The internship delivered a more accessible and visually stronger CanPlan experience, together with a clear research base for future technical decisions.
+                    </Text>
+                    <StatList>
+                      <StatItem>
+                        <strong>Organization impact</strong>
+                        <span>A clearer, future-oriented proposal for CanPlan with strong attention to rebranding and scalability.</span>
+                      </StatItem>
+                      <StatItem>
+                        <strong>Technical growth</strong>
+                        <span>Deeper insight into backend architecture, cloud options, access control and turning research into clear decision options.</span>
+                      </StatItem>
+                      <StatItem>
+                        <strong>Personal growth</strong>
+                        <span>More independence, stronger technical communication and greater confidence in international collaboration.</span>
+                      </StatItem>
+                    </StatList>
+                  </InfoCard>
+
+                  <InfoCard>
+                    <StageGalleryGrid>
+                      {stageGallery.map((item) => (
+                        <StageFigure key={item.title}>
+                          <StageFigureImage src={item.image} alt={item.title} />
+                          <StageFigureCaption>
+                            <strong>{item.title}</strong>
+                            <span>{item.caption}</span>
+                          </StageFigureCaption>
+                        </StageFigure>
+                      ))}
+                    </StageGalleryGrid>
+                  </InfoCard>
+                </ContentGrid>
+
+                <InternshipSubHeading style={{ marginTop: '48px' }}>
+                  <span>Documents</span>
+                </InternshipSubHeading>
+                <InfoCard>
+                  <TimelineTitle>
+                    Downloadable internship documents
+                  </TimelineTitle>
+                  <StageDocsGrid>
+                    {stageDownloads.map((item) => (
+                      <StageDocCard key={item.title} href={item.href} download={item.fileName}>
+                        <strong>{item.title}</strong>
+                        <span>{item.description}</span>
+                        <DocDownloadRow><Download size={16} /> Download file</DocDownloadRow>
+                      </StageDocCard>
+                    ))}
+                  </StageDocsGrid>
+                </InfoCard>
+              </Container>
             </Section>
 
             {/* Projects Section */}
-            <Section id="Projecten" $background="#f8f9fa">
+            <Section id="Projects" $background="#F6F7FB">
                 <Container>
-                    <CenteredSectionTitle>Mijn Projecten</CenteredSectionTitle>
-                    <SectionSubtitle>
-                        Elk project representeert een andere uitdaging en oplossing.
-                    </SectionSubtitle>
+                <SectionTitle>My Projects</SectionTitle>
 
-                    <ProjectsGrid>
-                        {projects.map((project) => (
-                            <ProjectCard key={project.title}>
-                                <ProjectImage>
-                                    <img src={project.image} alt={project.title} />
-                                </ProjectImage>
-                                <ProjectContent>
-                                    <ProjectTitle>{project.title}</ProjectTitle>
-                                    <ProjectDescription>{project.description}</ProjectDescription>
-                                    <TagsContainer>
-                                        {project.tags.map((tag) => (
-                                            <Tag key={tag}>{tag}</Tag>
-                                        ))}
-                                    </TagsContainer>
-                                    <ProjectLinks>
-                                        <ProjectLink
-                                            as="a"
-                                            href={`/project/${project.title.toLowerCase().replace(/\s+/g, "-")}`}
-                                        >
-                                            View Project
-                                        </ProjectLink>
-
-                                        <ProjectLink
-                                            href={project.github}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                        >
-                                            <span>Link Code</span>
-                                        </ProjectLink>
-                                    </ProjectLinks>
-                                </ProjectContent>
-                            </ProjectCard>
-                        ))}
-                    </ProjectsGrid>
+                  <ProjectsGrid>
+                    {projects.map((project) => (
+                      <ProjectCard key={project.title}>
+                        <ProjectImage>
+                          <img src={project.image} alt={project.title} />
+                        </ProjectImage>
+                        <ProjectContent>
+                          <ProjectTitle>{project.title}</ProjectTitle>
+                          <ProjectDescription>{project.shortDescription}</ProjectDescription>
+                          <TagsContainer>
+                            {project.tags.map((tag) => (
+                              <Tag key={tag}>{tag}</Tag>
+                            ))}
+                          </TagsContainer>
+                          <ProjectLinks>
+                            {/* "View details" opent nu de modal */}
+                            <ProjectLink
+                              as="button"
+                              style={{ background: "none", border: "none", padding: 0, cursor: "pointer", color: "#666", fontSize: "inherit", fontFamily: "inherit" }}
+                              onClick={() => {
+                                // zet het project om naar het formaat dat ProjectModal verwacht
+                                // (id + images array vanuit ProjectDetail.jsx data)
+                                setSelectedProject(project);
+                              }}
+                            >
+                              View details
+                            </ProjectLink>
+                  
+                            <ProjectLink
+                              href={project.github}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              <span>Source / demo</span>
+                            </ProjectLink>
+                          </ProjectLinks>
+                        </ProjectContent>
+                      </ProjectCard>
+                    ))}
+                  </ProjectsGrid>
                 </Container>
             </Section>
 
             {/* Footer */}
             <Footer>
+              {/* Contact Section */}
+              <Container>
+                <FooterTitle>Contact</FooterTitle>
+                <ContactTitle>Feel free to reach out if you have any questions or would like to collaborate!</ContactTitle>
+
+                <ContactGrid>
+                  {contactLinks.map((item) => {
+                    const isExternal = item.href && item.href.startsWith('http');
+                    return (
+                      <ContactCard
+                        key={item.key || item.title}
+                        href={item.href}
+                        target={isExternal ? '_blank' : undefined}
+                        rel={isExternal ? 'noopener noreferrer' : undefined}
+                        download={item.download ? 'Resume_Wout_Jansegers.pdf' : undefined}
+                      >
+                        <strong>{item.title}</strong>
+                        <span>{item.text}</span>
+                      </ContactCard>
+                    );
+                  })}
+                </ContactGrid>
+              </Container>
                 <Container>
-                    <p>Portfolio gemaakt door Wout Jansegers</p>
+                <p>© 2026 Wout Jansegers - All rights reserved.</p>
                 </Container>
             </Footer>
 
@@ -819,6 +1334,13 @@ export default function Portfolio() {
                 <ScrollToTopButton onClick={scrollToTop}>
                     <ArrowUp size={20} />
                 </ScrollToTopButton>
+            )}
+
+            {selectedProject && (
+              <ProjectModal
+                project={selectedProject}
+                onClose={() => setSelectedProject(null)}
+              />
             )}
         </>
     );
