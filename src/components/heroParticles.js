@@ -9,8 +9,16 @@ const SimpleParticles = () => {
     const animationRef = useRef(null);
 
     useEffect(() => {
+        if (process.env.NODE_ENV === 'test') {
+            return undefined;
+        }
+
         const canvas = canvasRef.current;
-        const ctx = canvas.getContext('2d');
+        const ctx = canvas?.getContext?.('2d');
+
+        if (!canvas || !ctx) {
+            return undefined;
+        }
         let width, height;
 
         // Resize function to handle window changes
