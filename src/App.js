@@ -12,9 +12,9 @@ import CanAssist5 from "./Assets/ImagesStage/CanAssist5.jpeg";
 import CanAssist6 from "./Assets/ImagesStage/CanAssist6.png";
 import CanAssist0 from "./Assets/ImagesStage/CanAssist0.png";
 import CanAssistLogo from "./Assets/ImagesStage/CanAssist-Logo (1).jpg";
-import StageProjectPlan from "./Assets/StageDocumenten/ProjectPlan-Document-WoutJansegers.docx";
-import StageRealization from "./Assets/StageDocumenten/Realization-Document-WoutJansegers.docx";
-import StageReflection from "./Assets/StageDocumenten/Reflection-Document-WoutJansegers.docx";
+import StageProjectPlan from "./Assets/StageDocumenten/ProjectPlan-Document-WoutJansegers.pdf";
+import StageRealization from "./Assets/StageDocumenten/Realization-Document-WoutJansegers.pdf";
+import StageReflection from "./Assets/StageDocumenten/Reflection-Document-WoutJansegers.pdf";
 import ProjectModal from "./components/ProjectModal";
 import { projects } from "./projectsData";
 
@@ -885,19 +885,19 @@ export default function Portfolio() {
             title: "Project Plan",
             description: "Goals, scope and approach of the internship.",
             href: StageProjectPlan,
-            fileName: "ProjectPlan-Document-WoutJansegers.docx",
+            fileName: "ProjectPlan-Document-WoutJansegers.pdf",
           },
           {
             title: "Realization Document",
             description: "Technical execution, design decisions and completed parts.",
             href: StageRealization,
-            fileName: "Realization-Document-WoutJansegers.docx",
+            fileName: "Realization-Document-WoutJansegers.pdf",
           },
           {
             title: "Reflection Document",
             description: "Substantive and personal reflection on the internship period.",
             href: StageReflection,
-            fileName: "Reflection-Document-WoutJansegers.docx",
+            fileName: "Reflection-Document-WoutJansegers.pdf",
           },
         ];
 
@@ -1018,11 +1018,11 @@ export default function Portfolio() {
                             />
                         </HeroSubtitle>
                         <ButtonContainer>
-                            <PrimaryButton onClick={() => scrollToSection('Projects')}>
-                              View my work
-                            </PrimaryButton>
                             <PrimaryButton onClick={() => scrollToSection('Internship')}>
                               Internship
+                            </PrimaryButton>
+                            <PrimaryButton onClick={() => scrollToSection('Projects')}>
+                              View my work
                             </PrimaryButton>
                         </ButtonContainer>
                     </HeroContent>
@@ -1054,9 +1054,20 @@ export default function Portfolio() {
                       </Text>
 
                       <SkillsContainer>
-                        <SkillsTitle>Skills</SkillsTitle>
+                        <SkillsTitle>Hard Skills</SkillsTitle>
                         <SkillsTags>
                           {['React', 'Vue', 'Laravel', 'JavaScript', 'Flutter', 'Figma'].map((skill) => (
+                            <SkillTag key={skill}>
+                              {skill}
+                            </SkillTag>
+                          ))}
+                        </SkillsTags>
+                      </SkillsContainer>
+
+                      <SkillsContainer>
+                        <SkillsTitle>Soft Skills</SkillsTitle>
+                        <SkillsTags>
+                          {['Flexible', 'Creative', 'Teamplayer', 'Open-minded', 'Critical thinker'].map((skill) => (
                             <SkillTag key={skill}>
                               {skill}
                             </SkillTag>
@@ -1271,26 +1282,23 @@ export default function Portfolio() {
                             ))}
                           </TagsContainer>
                           <ProjectLinks>
-                            {/* "View details" opent nu de modal */}
                             <ProjectLink
                               as="button"
                               style={{ background: "none", border: "none", padding: 0, cursor: "pointer", color: "#666", fontSize: "inherit", fontFamily: "inherit" }}
-                              onClick={() => {
-                                // zet het project om naar het formaat dat ProjectModal verwacht
-                                // (id + images array vanuit ProjectDetail.jsx data)
-                                setSelectedProject(project);
-                              }}
+                              onClick={() => setSelectedProject(project)}
                             >
                               View details
                             </ProjectLink>
-                  
-                            <ProjectLink
-                              href={project.github}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                            >
-                              <span>Source / demo</span>
-                            </ProjectLink>
+
+                            {project.github && (
+                              <ProjectLink
+                                href={project.github}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                              >
+                                <span>Source / demo</span>
+                              </ProjectLink>
+                            )}
                           </ProjectLinks>
                         </ProjectContent>
                       </ProjectCard>
@@ -1302,7 +1310,7 @@ export default function Portfolio() {
             {/* Footer */}
             <Footer>
               {/* Contact Section */}
-              <Container>
+              <Container id="Contact">
                 <FooterTitle>Contact</FooterTitle>
                 <ContactTitle>Feel free to reach out if you have any questions or would like to collaborate!</ContactTitle>
 
