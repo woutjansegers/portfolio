@@ -82,7 +82,6 @@ export const projects = [
     tags: ["Laravel", "PHP", "sqlite"],
     image: Pikassa_card,
     images: [Pikassa3, Pikassa2, Pikassa4, Pikassa1, Pikassa],
-    github: "https://github.com/Thomas-More-Digital-Innovation/2425-TM-012-Eenvoudig-kassasysteem-voor-de-Wagenwinkel",
   },
   {
     id: "exploremore",
@@ -92,7 +91,6 @@ export const projects = [
     tags: ["Flutter", "Unity", "Vuforia"],
     image: AR3,
     images: [AR3, AR, AR1, AR2],
-    github: "https://github.com/Thomas-More-Digital-Innovation/2324-ITF-001-AR-rondleiding",
   },
   {
     id: "brandweer-zone-rand",
@@ -102,7 +100,6 @@ export const projects = [
     tags: ["Vue", "Electron"],
     image: BZR1,
     images: [BZR1, BZR2, BZR3],
-    github: "https://github.com/Thomas-More-Digital-Innovation/2526-ZR-001-Awareness-customer-tracking-system",
   },
   {
     id: "portfolio",
@@ -122,7 +119,6 @@ export const projects = [
     tags: ["React", "TypeScript", "Electron"],
     image: WAP1,
     images: [WAP1, WAP2, WAP3, WAP4, WAP5],
-    github: "https://github.com/Thomas-More-Digital-Innovation/2526-MPI-003-Workarea-projections",
   },
   {
     id: "aerolytics",
@@ -142,7 +138,6 @@ export const projects = [
     tags: ["Angular"],
     image: ALB1,
     images: [ALB1, ALB2, ALB3, ALB4, ALB5],
-    github: "https://github.com/itfactory-tm/2025-SWE-Monorepo-09",
   },
   {
     id: "de-beerse-bende",
@@ -152,7 +147,6 @@ export const projects = [
     tags: ["Laravel", "PHP", "sqlite", "Figma"],
     image: beersebende,
     images: [beersebende, beersebende1, beersebende2, beersebende3, beersebende4],
-    github: "https://debeersebende.bramserre.be/",
   },
   {
     id: "de-duffalo's-prototype",
@@ -172,7 +166,6 @@ export const projects = [
     tags: ["Laravel", "PHP", "sqlite"],
     image: mpioosterlo,
     images: [mpioosterlo, mpioosterlo1, mpioosterlo2],
-    github: "https://github.com/Thomas-More-Digital-Innovation/2425-MPI-002-jobcoachOndersteuning",
   },
   {
     id: "techtalks",

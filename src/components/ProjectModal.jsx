@@ -87,7 +87,7 @@ const CloseButton = styled.button`
 // ─── Content area ─────────────────────────────────────────────────────────────
 
 const Content = styled.div`
-  padding: 16px 28px 32px;
+  padding: 28px 28px 32px;
 `;
 
 const Title = styled.h2`
@@ -147,7 +147,7 @@ const ZoomHint = styled.div`
   display: flex;
   align-items: center;
   gap: 5px;
-  background: rgba(15, 118, 109, 0.68);
+  background: rgba(0,0,0,0.45);
   color: white;
   font-size: 0.75rem;
   padding: 5px 10px;
@@ -420,6 +420,7 @@ export default function ProjectModal({ project, onClose }) {
                 <MetaLabel>Images</MetaLabel>
                 <MetaValue>{images.length} visual references</MetaValue>
               </MetaCard>
+              {project.github && (
               <MetaCard>
                 <MetaLabel>Link Type</MetaLabel>
                 <MetaValue>
@@ -428,11 +429,14 @@ export default function ProjectModal({ project, onClose }) {
                     : "Live demo or external reference"}
                 </MetaValue>
               </MetaCard>
+              )}
             </MetaGrid>
 
-            <LinkButton href={project.github} target="_blank" rel="noopener noreferrer">
-              View source / demo <ExternalLink size={18} />
-            </LinkButton>
+            {project.github && (
+              <LinkButton href={project.github} target="_blank" rel="noopener noreferrer">
+                View source / demo <ExternalLink size={18} />
+              </LinkButton>
+            )}
           </Content>
         </Modal>
       </Overlay>
